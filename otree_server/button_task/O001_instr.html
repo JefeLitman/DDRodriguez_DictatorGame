@@ -1,0 +1,27 @@
+{{ block content }}
+    <!-- Version 1.0 -->
+    <link rel="stylesheet" href="{{ static 'global/base.css' }}">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h2>Sección {{nombre_seccion}}</h2>
+                </div>
+            </div>
+            <div id="slide1" class="row my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p>En esta sección usted deberá tomar una decisión. Al igual que usted, uno de los jugadores presente en la sesión acaba de terminar la sección 1. Ahora, usted tiene la posibilidad de {{nombre_boton}} el pago obtenido por esa persona al final de la sección 1.</p>
+                        <p>Tenga en cuenta que esta decisión no implicará ningún tipo de costo o beneficio para usted en términos de pago. También, esta decisión no modificará el pago que usted reciba en etapas posteriores de esta sesión.</p>
+                        <p>Si desea hacer uso del <b>botón de {{nombre_boton}}</b> basta con que lo oprima. Esto lo dirigirá directamente a la <b>Sección 3.</b> Si no desea hacer uso de esta opción, puede darle en continuar.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-3 text-center">
+                    <button class="btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ endblock }}

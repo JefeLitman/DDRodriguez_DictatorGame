@@ -1,0 +1,28 @@
+{{ block content }}
+    <!-- Version 1.0 -->
+    <link rel="stylesheet" href="{{ static 'global/base.css' }}">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h2>Sección {{nombre_seccion}}</h2>
+                </div>
+            </div>
+            <div id="slide1" class="row my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p>La primera parte de esta sesión consta de dos etapas. En la primera, en la pantalla de su computador aparecerán oraciones, una a la vez. Su tarea consiste en transcribirlas en el recuadro dispuesto para ello.</p>
+                        <p>Usted deberá transcribir tantas oraciones como le sea posible en un periodo de 4 minutos. Por cada oración que transcriba correctamente se le pagarán <b>0.5 puntos</b> (500 PESOS).</p>
+                        <p>Al final de la actividad, los puntos que usted haya ganado se convertirán a pesos colombianos. Recuerde que cada punto equivale a {{points_4_cash}} pesos colombianos.</p>
+                        <p>Al finalizar el tiempo de la tarea, obtendrá un resumen de sus ganancias según su desempeño.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-3 text-center">
+                    <button class="btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ endblock }}

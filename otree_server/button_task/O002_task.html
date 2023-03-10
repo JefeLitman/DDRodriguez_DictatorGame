@@ -1,0 +1,21 @@
+{{ block content }}
+    <!-- Version 1.0 -->
+    <link rel="stylesheet" href="{{ static 'global/base.css' }}">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h2>Sección {{nombre_seccion}}</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 text-center">
+                    <button name="button_pressed" value="1" class="btn btn-danger" style="min-height: 10vh;">{{nombre_boton}}</button>                    
+                </div>
+                <div class="col-6 text-center">
+                    <button name="button_pressed" value="0" class="btn btn-primary" style="min-height: 10vh;">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ endblock }}

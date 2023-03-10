@@ -1,0 +1,84 @@
+{{ block content }}
+    <!-- Version 1.0 -->
+    <link rel="stylesheet" href="{{ static 'global/base.css' }}">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h2>Pago</h2>
+                </div>
+            </div>
+            <div id="slide1" class="row my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p>Sus ganancias durante la sesión se calcularán primero en puntos. Los puntos se convertirán a COP al final de la sesión. Lo anterior se puede expresar de la siguiente manera:</p>
+                        <p class="text-center"><b>1 punto = {{points_4_cash}} COP</b></p>
+                        <p>Usted recibirá <b>{{fee}} puntos</b> por completar la sesión. <b>También tendrá la oportunidad de ganar dinero adicional.</b> Estas ganancias adicionales dependen de lo que usted y otros participantes de su grupo hagan durante la sesión. Lo explicaremos en detalle más adelante.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="slide2" class="row my-3 d-none">
+                <div class="card">
+                    <div class="card-body">
+                        <p>
+                            {{ if treatment}}
+                                <b>Esta sesión se divide en 5 secciones.</b> En 4 de las 5 secciones tendrá la oportunidad de ganar dinero    
+                            {{ else }}
+                                Esta sesión se divide en 4 secciones. Le daremos instrucciones al inicio de cada sección.
+                            {{ endif }}
+                        </p>
+                        <p><b>
+                            Al final de la sesión, una de las 
+                            {{ if treatment}}
+                                5
+                            {{ else }}
+                                4
+                            {{ endif }}
+                            secciones será seleccionada al azar y le pagaremos las ganancias que haya obtenido en esa sección. Todas las secciones tienen la misma probabilidad de ser seleccionadas. Sus ganancias se sumarán a su pago inicial de {{fee}} puntos.
+                        </b></p>
+                        <p>Le recordamos que los pagos se harán de manera digital únicamente a cuentas bancarias autorizadas por la Universidad de los Andes. Los pagos se verán reflejados en las próximas 72 horas, una vez usted haya diligenciado y enviado el formulario para pagos que le compartiremos al final de la sesión.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div id="back_div" class="col-3 text-center d-none">
+                    <button type="button" id="back" class="btn btn-primary">Retroceder</button>
+                </div>
+                <div class="col-3 text-center">
+                    <button type="button" id="next" class="btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+            <div class="row d-none">
+                <button id="submit">Next Page</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ static 'global/animation.js' }}"></script>
+    <script>
+        let idx = 1;
+        document.getElementById("back").onclick = () => {
+            if (idx != 1){
+                let prev = document.getElementById("slide"+idx)
+                let next = document.getElementById("slide"+(idx-1))
+                fade(prev, next);
+                if (idx == 2){
+                    fade_out(document.getElementById("back_div"));
+                }
+                idx--;
+            }
+        };
+        document.getElementById("next").onclick = () => {
+            if (idx == 2){
+                document.getElementById("submit").click();
+                return null;
+            }
+            let prev = document.getElementById("slide"+idx)
+            let next = document.getElementById("slide"+(idx+1))
+            fade(prev, next);
+            if (idx == 1){
+                fade_in(document.getElementById("back_div"));
+            }
+            idx++;
+        };
+    </script>
+{{ endblock }}

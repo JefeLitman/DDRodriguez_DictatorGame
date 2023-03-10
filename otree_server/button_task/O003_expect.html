@@ -1,0 +1,89 @@
+{{ block content }}
+    <!-- Version 1.0 -->
+    <link rel="stylesheet" href="{{ static 'global/base.css' }}">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h2>Sección {{nombre_seccion}}</h2>
+                </div>
+            </div>
+            <div id="slide1" class="row my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p>Ahora le pediremos hacer una predicción sobre lo que hicieron los demás participantes en la situación anterior. Si usted responde lo mismo que la mayoría de los participantes, le pagaremos <b>5 puntos</b> adicionales al pago que haya obtenido en la situación anterior. De lo contrario, si esta sección es elegida al momento de sortear las secciones, usted solo recibirá el pago de esta sin bonificación alguna. Como el sorteo de cuál de las secciones se pagará ocurrirá después de que todos hayan finalizado la sesión, le recomendamos que responda a todas las preguntas con el máximo cuidado y como si todas fueran a ser pagadas.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="slide2" class="row my-3 d-none">
+                <div class="card">
+                    <div class="card-body">
+                        <p><b>Le recordamos la situación anterior enunciado de la situación anterior</b></p>
+                        <p class="fst-italic">En esta sección usted deberá tomar una decisión. Al igual que usted, uno de los jugadores presente en la sesión acaba de terminar la <b>sección 1.</b> Ahora, usted tiene la posibilidad de {{nombre_boton}} el pago obtenido por esa persona al final de la sección 1. </p>
+                    </div>
+                </div>
+            </div>
+            <div id="slide3" class="row my-3 d-none">
+                <div class="card">
+                    <div class="card-body">
+                        <p><b>Le recordamos la situación anterior enunciado de la situación anterior</b></p>
+                        <p class="fst-italic">En esta sección usted deberá tomar una decisión. Al igual que usted, uno de los jugadores presente en la sesión acaba de terminar la <b>sección 1.</b> Ahora, usted tiene la posibilidad de {{nombre_boton}} el pago obtenido por esa persona al final de la sección 1. </p>
+                    </div>
+                </div>
+            </div>
+            <div id="slide4" class="row my-3 d-none">
+                <div class="card">
+                    <div class="card-body">
+                        <p>Ahora, le pedimos que responda:</p>
+                        <p class="text-center"><b>¿Cuál cree que haya sido la elección más frecuente entre las personas que participaron en la situación anterior?</b></p>
+                        <p class="card-text text-center">
+                            <button name="button_expectative" value="1" class="btn btn-success mx-2">{{nombre_boton}}</button>
+                            <button name="button_expectative" value="0" class="btn btn-success mx-2">No {{nombre_boton}}</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div id="back_div" class="col-3 text-center d-none">
+                    <button type="button" id="back" class="btn btn-primary">Retroceder</button>
+                </div>
+                <div id="next_div" class="col-3 text-center">
+                    <button type="button" id="next" class="btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ static 'global/animation.js' }}"></script>
+    <script>
+        let idx = 1;
+        document.getElementById("back").onclick = () => {
+            if (idx != 1){
+                let prev = document.getElementById("slide"+idx)
+                let next = document.getElementById("slide"+(idx-1))
+                fade(prev, next);
+                if (idx == 2){
+                    fade_out(document.getElementById("back_div"));
+                }
+                else if(idx == 4){
+                    fade_in(document.getElementById("next_div"))
+                }
+                idx--;
+            }
+        };
+        document.getElementById("next").onclick = () => {
+            if(idx < 4){
+                if (idx == 3){
+                    fade_out(document.getElementById("next_div"));
+                    return;
+                }
+                let prev = document.getElementById("slide"+idx)
+                let next = document.getElementById("slide"+(idx+1))
+                fade(prev, next);
+                if (idx == 1){
+                    fade_in(document.getElementById("back_div"));
+                }
+                idx++;
+            }
+        };
+    </script>
+{{ endblock }}
