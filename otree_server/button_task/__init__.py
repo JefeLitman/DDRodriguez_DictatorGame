@@ -1,5 +1,5 @@
 """File containing the button task for players
-Version: 1.0
+Version: 1.1
 Made By: Edgar RP
 """
 from otree.api import *
@@ -14,7 +14,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'button_task'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
-    NOMBRE_SECCION = 2
+    NRO_SECCION = 2
     NOMBRE_BOTON = "destruir"
 
 class Subsession(BaseSubsession):
@@ -29,6 +29,9 @@ class Player(BasePlayer):
     button_pressed = models.BooleanField()
     button_expectative = models.BooleanField()
 
+def creating_session(subsession):
+    subsession.group_randomly()
+
 # PAGES
 class O001_instr(Page):
     @staticmethod
@@ -38,7 +41,7 @@ class O001_instr(Page):
     @staticmethod
     def vars_for_template(player):
         return dict(
-            nombre_seccion = C.NOMBRE_SECCION,
+            nombre_seccion = C.NRO_SECCION,
             nombre_boton = C.NOMBRE_BOTON
         )
 
@@ -50,9 +53,10 @@ class O002_task(Page):
     def is_displayed(player):
         return player.session.config["treatment_social"]
     
+    @staticmethod
     def vars_for_template(player):
         return dict(
-            nombre_seccion = C.NOMBRE_SECCION,
+            nombre_seccion = C.NRO_SECCION,
             nombre_boton = C.NOMBRE_BOTON.capitalize()
         )
 
@@ -64,10 +68,11 @@ class O003_expect(Page):
     def is_displayed(player):
         return player.session.config["treatment_social"]
     
+    @staticmethod
     def vars_for_template(player):
         return dict(
-            nombre_seccion = C.NOMBRE_SECCION,
-            nombre_boton = C.NOMBRE_BOTON
+            nombre_seccion = C.NRO_SECCION,
+            nombre_boton = C.NOMBRE_BOTON.capitalize()
         )
     
 class ResultsWaitPage(WaitPage):
@@ -78,21 +83,21 @@ class ResultsWaitPage(WaitPage):
     @staticmethod
     def after_all_players_arrive(group):
         if group.session.winner_section == 1:
-            if p1.button_pressed:
-                p0.payoff = 0
-        p0, p1 = group.get_players()
-        
-        for p in group.get_players():
-            p.payoff = 100
+            for p in group.get_players():
+                op = p.get_others_in_group()[0]
+                if p.button_pressed:
+                    op.payoff = 0
 
 class O004_results(Page):
     @staticmethod
     def is_displayed(player):
         return player.session.config["treatment_social"]
     
+    @staticmethod
     def vars_for_template(player):
         return dict(
-            nombre_seccion = C.NOMBRE_SECCION
+            nombre_seccion = C.NRO_SECCION,
+            seleccion=not player.button_pressed
         )
     
     @staticmethod
@@ -100,4 +105,4 @@ class O004_results(Page):
         set_experiment_params(player)
 
 
-page_sequence = [O001_instr, O002_task, O003_results]
+page_sequence = [O001_instr, O002_task, O003_expect, ResultsWaitPage, O004_results]
