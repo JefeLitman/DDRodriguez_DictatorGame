@@ -10,6 +10,9 @@ SESSION_CONFIGS = [
         name='Dictator_Game',
         app_sequence=[
             'information',
+            'effort_task',
+            'button_task',
+            'simple_dictator'
         ],
         num_demo_participants=2,
         treatment_social=False,
