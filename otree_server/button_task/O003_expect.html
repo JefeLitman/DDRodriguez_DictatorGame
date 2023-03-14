@@ -1,5 +1,5 @@
 {{ block content }}
-    <!-- Version 1.0 -->
+    <!-- Version 1.1 -->
     <link rel="stylesheet" href="{{ static 'global/base.css' }}">
     <div class="row">
         <div class="container-fluid">
@@ -18,20 +18,12 @@
             <div id="slide2" class="row my-3 d-none">
                 <div class="card">
                     <div class="card-body">
-                        <p><b>Le recordamos la situación anterior enunciado de la situación anterior</b></p>
+                        <p><b>Le recordamos el enunciado de la situación anterior</b></p>
                         <p class="fst-italic">En esta sección usted deberá tomar una decisión. Al igual que usted, uno de los jugadores presente en la sesión acaba de terminar la <b>sección 1.</b> Ahora, usted tiene la posibilidad de {{nombre_boton}} el pago obtenido por esa persona al final de la sección 1. </p>
                     </div>
                 </div>
             </div>
             <div id="slide3" class="row my-3 d-none">
-                <div class="card">
-                    <div class="card-body">
-                        <p><b>Le recordamos la situación anterior enunciado de la situación anterior</b></p>
-                        <p class="fst-italic">En esta sección usted deberá tomar una decisión. Al igual que usted, uno de los jugadores presente en la sesión acaba de terminar la <b>sección 1.</b> Ahora, usted tiene la posibilidad de {{nombre_boton}} el pago obtenido por esa persona al final de la sección 1. </p>
-                    </div>
-                </div>
-            </div>
-            <div id="slide4" class="row my-3 d-none">
                 <div class="card">
                     <div class="card-body">
                         <p>Ahora, le pedimos que responda:</p>
@@ -64,7 +56,7 @@
                 if (idx == 2){
                     fade_out(document.getElementById("back_div"));
                 }
-                else if(idx == 4){
+                else if(idx == 3){
                     fade_in(document.getElementById("next_div"))
                 }
                 idx--;
@@ -72,9 +64,8 @@
         };
         document.getElementById("next").onclick = () => {
             if(idx < 4){
-                if (idx == 3){
+                if (idx == 2){
                     fade_out(document.getElementById("next_div"));
-                    return;
                 }
                 let prev = document.getElementById("slide"+idx)
                 let next = document.getElementById("slide"+(idx+1))
