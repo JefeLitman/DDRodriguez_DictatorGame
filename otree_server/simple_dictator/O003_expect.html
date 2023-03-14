@@ -1,0 +1,82 @@
+{{ block content }}
+    <!-- Version 1.0 -->
+    <link rel="stylesheet" href="{{ static 'global/base.css' }}">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h2>Sección {{nombre_seccion}}</h2>
+                </div>
+            </div>
+            <div id="slide1" class="row my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p>Ahora le pediremos hacer una predicción sobre lo que hicieron los demás participantes en la situación anterior. Si usted responde lo mismo que la mayoría de los participantes, le pagaremos <b>5 puntos</b> adicionales al pago que haya obtenido en la situación anterior. De lo contrario, si esta sección es elegida al momento de sortear las secciones, usted solo recibirá el pago de esta sin bonificación alguna. Como el sorteo de cuál de las secciones se pagará ocurrirá después de que todos hayan finalizado la sesión, le recomendamos que responda a todas las preguntas con el máximo cuidado y como si todas fueran a ser pagadas. </p>
+                    </div>
+                </div>
+            </div>
+            <div id="slide2" class="row my-3 d-none">
+                <div class="card">
+                    <div class="card-body">
+                        <p><b>Le recordamos el enunciado de la situación anterior</b></p>
+                        <p class="fst-italic">Para la situación A continuación, se describe una situación real en la que una persona, el Individuo A, debe tomar una decisión. La situación involucra al individuo A, quien es emparejado al azar con otra persona, el Individuo B, en un estudio de toma de decisiones. El emparejamiento es anónimo, lo que significa que ninguno de los dos individuos sabrá nunca la identidad del otro individuo con el que está emparejado. Al individuo A se le ofrece la posibilidad de repartir como 10 puntos entre él y el individuo B.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="slide3" class="row my-3 d-none">
+                <div class="card">
+                    <div class="card-body">
+                        <p>Ahora, le pedimos que responda:</p>
+                        <p class="text-center"><b>¿Cuál cree que haya sido la elección más frecuente entre las personas que participaron en la situación anterior?</b></p>
+                        <div class="btn-group-vertical" role="group">
+                            <button name="sd_expectative" value="10" class="btn btn-outline-dark text-start">1. Quedarse con <b>10 puntos</b> y enviar <b>0 puntos</b> al individuo B</button>
+                            <button name="sd_expectative" value="8" class="btn btn-outline-dark text-start">2. Quedarse con <b>8 puntos</b> y enviar <b>2 puntos</b> al individuo B</button>
+                            <button name="sd_expectative" value="5" class="btn btn-outline-dark text-start">3. Quedarse con <b>5 puntos</b> y enviar <b>5 puntos</b> al individuo B</button>
+                            <button name="sd_expectative" value="2" class="btn btn-outline-dark text-start">4. Quedarse con <b>2 puntos</b> y enviar <b>8 puntos</b> al individuo B</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div id="back_div" class="col-3 text-center d-none">
+                    <button type="button" id="back" class="btn btn-primary">Retroceder</button>
+                </div>
+                <div id="next_div" class="col-3 text-center">
+                    <button type="button" id="next" class="btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ static 'global/animation.js' }}"></script>
+    <script>
+        let idx = 1;
+        document.getElementById("back").onclick = () => {
+            if (idx != 1){
+                let prev = document.getElementById("slide"+idx)
+                let next = document.getElementById("slide"+(idx-1))
+                fade(prev, next);
+                if (idx == 2){
+                    fade_out(document.getElementById("back_div"));
+                }
+                else if(idx == 3){
+                    fade_in(document.getElementById("next_div"))
+                }
+                idx--;
+            }
+        };
+        document.getElementById("next").onclick = () => {
+            if(idx < 4){
+                if (idx == 2){
+                    fade_out(document.getElementById("next_div"));
+                }
+                let prev = document.getElementById("slide"+idx)
+                let next = document.getElementById("slide"+(idx+1))
+                fade(prev, next);
+                if (idx == 1){
+                    fade_in(document.getElementById("back_div"));
+                }
+                idx++;
+            }
+        };
+    </script>
+{{ endblock }}
