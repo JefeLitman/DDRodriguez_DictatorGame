@@ -1,0 +1,27 @@
+{{ block content }}
+    <!-- Version 1.0 -->
+    <link rel="stylesheet" href="{{ static 'global/base.css' }}">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h2>Sección {{nombre_seccion}}</h2>
+                </div>
+            </div>
+            <div id="slide1" class="row my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p>Ahora, le pedimos que elija cuál es la decisión que usted tomaría si fuese el individuo A, seleccionando una entre las siguientes opciones:</p>
+                        <div class="btn-group-vertical" role="group">
+                            <button name="sd_decision" value="10" class="btn btn-outline-dark text-start">1. Quedarse con <b>10 puntos</b> y enviar <b>0 puntos</b> al individuo B</button>
+                            <button name="sd_decision" value="8" class="btn btn-outline-dark text-start">2. Quedarse con <b>8 puntos</b> y enviar <b>2 puntos</b> al individuo B</button>
+                            <button name="sd_decision" value="5" class="btn btn-outline-dark text-start">3. Quedarse con <b>5 puntos</b> y enviar <b>5 puntos</b> al individuo B</button>
+                            <button name="sd_decision" value="2" class="btn btn-outline-dark text-start">4. Quedarse con <b>2 puntos</b> y enviar <b>8 puntos</b> al individuo B</button>
+                        </div>
+                        <p class="fst-italic">Recuerde, de nuevo, que un punto equivale a 1.000 COP.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ endblock }}
