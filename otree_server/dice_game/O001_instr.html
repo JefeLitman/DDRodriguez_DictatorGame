@@ -1,0 +1,49 @@
+{{ block content }}
+    <!-- Version 1.0 -->
+    <link rel="stylesheet" href="{{ static 'global/base.css' }}">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h2>Sección {{nombre_seccion}}</h2>
+                </div>
+            </div>
+            <div id="slide1" class="row my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p>A continuación, se describe una situación real en la que una persona, el Individuo A, debe tomar una decisión. Al individuo A se le asignó un dado para que lo lanzara de manera anónima sin que nadie pudiera conocer el resultado del lanzamiento. Al individuo A se le paga de acuerdo con el número reportado como se muestra en la siguiente tabla:</p>
+                        <div class="table-responsive">
+                            <table class="table text-center align-items-center">
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">Número reportado</th>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Pago en COP</th>
+                                    <td>0</td>
+                                    <td>2000</td>
+                                    <td>4000</td>
+                                    <td>6000</td>
+                                    <td>8000</td>
+                                    <td>10000</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-3 text-center">
+                    <button class="btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ endblock }}

@@ -1,0 +1,27 @@
+{{ block content }}
+    <!-- Version 1.0 -->
+    <link rel="stylesheet" href="{{ static 'global/base.css' }}">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h2>Sección {{nombre_seccion}}</h2>
+                </div>
+            </div>
+            <div id="slide1" class="row my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p>Ahora, le pedimos que elija cuál es la decisión que usted tomaría si fuese el individuo A, seleccionando una entre las siguientes opciones:</p>
+                        <div class="btn-group-vertical" role="group">
+                            <button name="dg_decision" value="10" class="btn btn-outline-dark text-start">1. Reportar el número resultado del lanzamiento del dado</button>
+                            <button name="dg_decision" value="8" class="btn btn-outline-dark text-start">2. Reportar 1, 2, 3 independientemente del resultado del lanzamiento del dado</button>
+                            <button name="dg_decision" value="5" class="btn btn-outline-dark text-start">3. Reportar 4, 5 independientemente del resultado del lanzamiento del dado</button>
+                            <button name="dg_decision" value="2" class="btn btn-outline-dark text-start">4. Reportar 6 independientemente del resultado del lanzamiento del dado</button>
+                        </div>
+                        <p class="fst-italic">Recuerde que su pago para esta sección se calculará como el pago que obtendría el individuo A en esta situación.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ endblock }}
