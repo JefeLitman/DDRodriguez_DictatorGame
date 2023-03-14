@@ -1,5 +1,5 @@
 {{ block content }}
-    <!-- Version 1.0 -->
+    <!-- Version 1.1 -->
     <link rel="stylesheet" href="{{ static 'global/base.css' }}">
     <div class="row">
         <div class="container-fluid">
@@ -8,12 +8,12 @@
                     <h2>Sección {{nombre_seccion}}</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-6 text-center">
-                    <button name="button_pressed" value="1" class="btn btn-danger" style="min-height: 10vh;">{{nombre_boton}}</button>                    
+            <div class="row g-5">
+                <div class="col-6 text-end">
+                    <button name="button_pressed" value="1" class="btn btn-danger fs-3 fw-bold rounded-circle" style="min-height: 5em;">{{nombre_boton}}</button>                    
                 </div>
-                <div class="col-6 text-center">
-                    <button name="button_pressed" value="0" class="btn btn-primary" style="min-height: 10vh;">Continuar</button>
+                <div class="col-6 text-start">
+                    <button name="button_pressed" value="0" class="btn btn-primary fs-3 fw-bold rounded-circle" style="min-height: 5em;">Continuar</button>
                 </div>
             </div>
         </div>
