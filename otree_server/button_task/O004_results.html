@@ -1,5 +1,5 @@
 {{ block content }}
-    <!-- Version 1.0 -->
+    <!-- Version 1.1 -->
     <link rel="stylesheet" href="{{ static 'global/base.css' }}">
     <div class="row">
         <div class="container-fluid">
@@ -11,8 +11,8 @@
             <div id="slide1" class="row my-3">
                 <div class="card">
                     <div class="card-body">
-                        <p class=" fs-4 text-center">Resultados</p>
-                        <p></p>
+                        <p class="fs-4 text-center">Resultados</p>
+                        <p class="fw-bold">Usted {{ if seleccion}}NO{{ endif }} ha hecho uso de la opción de destruir. Por favor de click en siguiente para continuar.</p>
                     </div>
                 </div>
             </div>
