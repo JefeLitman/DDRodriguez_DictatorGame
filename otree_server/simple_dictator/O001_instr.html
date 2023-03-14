@@ -1,0 +1,26 @@
+{{ block content }}
+    <!-- Version 1.0 -->
+    <link rel="stylesheet" href="{{ static 'global/base.css' }}">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h2>Sección {{nombre_seccion}}</h2>
+                </div>
+            </div>
+            <div id="slide1" class="row my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p>A continuación, se describe una situación real en la que una persona, el Individuo A, debe tomar una decisión. La situación involucra al individuo A, quien es emparejado al azar con otra persona, el Individuo B, en un estudio de toma de decisiones. El emparejamiento es anónimo, lo que significa que ninguno de los dos individuos sabrá nunca la identidad del otro individuo con el que está emparejado. Al individuo A se le ofrece la posibilidad de repartir como 10 puntos entre él y el individuo B.</p>
+                        <p>Su pago para esta sección se calculará como el pago que obtendría el individuo A en esta situación.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-3 text-center">
+                    <button class="btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ endblock }}
